@@ -1,22 +1,32 @@
 #pragma once
 #include "Process.h"
+#include <list>
+
+using namespace std;
 
 class Scheduler
 {
 private:
-	int totalWaitingTime;
-	int numberOfProcesses;
-	Process x;
+	unsigned int totalWaitingTime;
+	unsigned int numberOfProcesses;
+	unsigned int remainingProcesses;
+	//Process *procArr;
+	list<Process> processList;
+	list<Process>::iterator listIterator;
 public:
-	Scheduler(Process[]);
+	//Scheduler();
+	Scheduler(list<Process> procList, unsigned int n);
 	~Scheduler();
-	void FCFS();
-	void SJF();
-	void PriorityP();
-	void PriorityNP();
-	void RoundRobin();
+	void chooseType(unsigned int x);
+	void FCFS(list<Process>);
+	void SJF(list<Process>);
+	void PriorityP(list<Process>);
+	void PriorityNP(list<Process>);
+	void RoundRobin(list<Process>);
 	void setTotalWaitingTime(int time) const;
 	float calculateAverageWaitingTime();
-	void execute();
+	void execute(list<Process>);
+	void sortSJF(list<Process>);
+	void sortPriority(list<Process>);
 };
 

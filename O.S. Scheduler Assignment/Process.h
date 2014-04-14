@@ -9,6 +9,7 @@ private:
 
 public:
 	Process(int id, int bTime, int pr) : PID(id), burstTime(bTime), priority(pr) {}
+	Process();
 	~Process();
 	int getID() { return PID; }
 
