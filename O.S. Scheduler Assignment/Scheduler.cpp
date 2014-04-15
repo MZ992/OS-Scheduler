@@ -1,14 +1,13 @@
 #include "Scheduler.h"
 #include <iostream>
-#include <list>
-
+#include <queue>
 
 //Scheduler::Scheduler()
 //{
 //
 //}
 
-Scheduler::Scheduler(list<Process> procList, unsigned int n)
+Scheduler::Scheduler(queue<Process> procList, unsigned int n)
 {
 	totalWaitingTime = 0;
 	numberOfProcesses = n;
@@ -33,7 +32,7 @@ void Scheduler::chooseType(unsigned int x)
 	switch (x)
 	{
 	case 1:
-		FCFS(;
+		FCFS();
 	case 2:
 		SJF();
 	case 3:
@@ -52,7 +51,7 @@ Scheduler::~Scheduler()
 }
 
 
-void Scheduler::FCFS(list<Process> procList)
+void Scheduler::FCFS(queue<Process> procList)
 {
 	for (int i = 0; i < numberOfProcesses; i++)
 	{
@@ -66,7 +65,7 @@ void Scheduler::FCFS(list<Process> procList)
 }
 
 
-void Scheduler::SJF(list<Process> procList)
+void Scheduler::SJF(queue<Process> procList)
 {
 	sortSJF(procList);
 	for (int i = 0; i < numberOfProcesses; i++)
@@ -81,24 +80,24 @@ void Scheduler::SJF(list<Process> procList)
 }
 
 
-void Scheduler::PriorityP(list<Process> procList)
+void Scheduler::PriorityP(queue<Process> procList)
+{
+	list[1] = Process();
+}
+
+
+void Scheduler::PriorityNP(queue<Process>)
 {
 
 }
 
 
-void Scheduler::PriorityNP(list<Process>)
+void Scheduler::RoundRobin(queue<Process>)
 {
 
 }
 
-
-void Scheduler::RoundRobin(list<Process>)
-{
-
-}
-
-void Scheduler::sortSJF(list<Process>)
+void Scheduler::sortSJF(queue<Process>)
 {
 	int index = 1;
 	int min = arr[0].getBurstTime();
@@ -114,7 +113,7 @@ void Scheduler::sortSJF(list<Process>)
 	}
 }
 
-void Scheduler::sortPriority(list<Process>)
+void Scheduler::sortPriority(queue<Process>)
 {
 	int index = 1;
 	int min = arr[0].getPriority();

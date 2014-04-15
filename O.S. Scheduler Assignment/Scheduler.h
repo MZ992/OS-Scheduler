@@ -18,15 +18,15 @@ public:
 	Scheduler(list<Process> procList, unsigned int n);
 	~Scheduler();
 	void chooseType(unsigned int x);
-	void FCFS(list<Process>);
-	void SJF(list<Process>);
-	void PriorityP(list<Process>);
-	void PriorityNP(list<Process>);
-	void RoundRobin(list<Process>);
+	void FCFS(list<Process> procList);
+	void SJF(list<Process> procList);
+	void PriorityP(list<Process> procList);
+	void PriorityNP(list<Process> procList);
+	void RoundRobin(list<Process> procList);
 	void setTotalWaitingTime(int time) const;
 	float calculateAverageWaitingTime();
-	void execute(list<Process>);
-	void sortSJF(list<Process>);
-	void sortPriority(list<Process>);
+	void execute(Process process);
+	void sortSJF(list<Process> procList);
+	void sortPriority(list<Process> procList);
 };
 
