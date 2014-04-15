@@ -1,30 +1,20 @@
 #include "Scheduler.h"
 #include <iostream>
 #include <queue>
+#include <list>
+#include <algorithm>
 
 //Scheduler::Scheduler()
 //{
 //
 //}
 
-Scheduler::Scheduler(queue<Process> procList, unsigned int n)
+Scheduler::Scheduler(list<Process> procList)
 {
 	totalWaitingTime = 0;
-	numberOfProcesses = n;
-	remainingProcesses = 
-	//remainingProcesses = n;
-	//listIterator = processList.begin();
-	//procArr = 0;
-	/*for (int i = 0; i < numberOfProcesses; i++)
-	{
-		//*procArr = processArray[i];
-
-		procArr++;
-	}*/
-	for (listIterator = processList.begin(); listIterator != processList.end(); listIterator++)
-	{
-		
-	}
+	numberOfProcesses = procList.size();
+	remainingProcesses = numberOfProcesses;
+	processList = procList;
 }
 
 void Scheduler::chooseType(unsigned int x)
@@ -32,15 +22,17 @@ void Scheduler::chooseType(unsigned int x)
 	switch (x)
 	{
 	case 1:
-		FCFS();
+		FCFS(processList);
 	case 2:
-		SJF();
+		SJF(processList);
 	case 3:
-		PriorityP();
+		PriorityP(processList);
 	case 4:
-		PriorityNP();
+		PriorityNP(processList);
 	case 5:
-		RoundRobin();
+		RoundRobin(processList);
+	default:
+		cout << "Entered value is invalid, please retry" << endl;
 		break;
 	}
 }
@@ -51,7 +43,7 @@ Scheduler::~Scheduler()
 }
 
 
-void Scheduler::FCFS(queue<Process> procList)
+void Scheduler::FCFS(list<Process> procList)
 {
 	for (int i = 0; i < numberOfProcesses; i++)
 	{
@@ -65,7 +57,7 @@ void Scheduler::FCFS(queue<Process> procList)
 }
 
 
-void Scheduler::SJF(queue<Process> procList)
+void Scheduler::SJF(list<Process> procList)
 {
 	sortSJF(procList);
 	for (int i = 0; i < numberOfProcesses; i++)
@@ -80,24 +72,24 @@ void Scheduler::SJF(queue<Process> procList)
 }
 
 
-void Scheduler::PriorityP(queue<Process> procList)
+void Scheduler::PriorityP(list<Process> procList)
 {
 	list[1] = Process();
 }
 
 
-void Scheduler::PriorityNP(queue<Process>)
+void Scheduler::PriorityNP(list<Process>)
 {
 
 }
 
 
-void Scheduler::RoundRobin(queue<Process>)
+void Scheduler::RoundRobin(list<Process>)
 {
 
 }
 
-void Scheduler::sortSJF(queue<Process>)
+void Scheduler::sortSJF(list<Process>)
 {
 	int index = 1;
 	int min = arr[0].getBurstTime();
@@ -113,7 +105,7 @@ void Scheduler::sortSJF(queue<Process>)
 	}
 }
 
-void Scheduler::sortPriority(queue<Process>)
+void Scheduler::sortPriority(list<Process>)
 {
 	int index = 1;
 	int min = arr[0].getPriority();

@@ -15,7 +15,7 @@ private:
 	list<Process>::iterator listIterator;
 public:
 	//Scheduler();
-	Scheduler(list<Process> procList, unsigned int n);
+	Scheduler(list<Process> procList);
 	~Scheduler();
 	void chooseType(unsigned int x);
 	void FCFS(list<Process> procList);
