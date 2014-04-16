@@ -26,9 +26,9 @@ void Scheduler::chooseType(unsigned int x)
 	case 2:
 		SJF(processList);
 	case 3:
-		PriorityP(processList);
+		SJFP(processList);
 	case 4:
-		PriorityNP(processList);
+		Priority(processList);
 	case 5:
 		RoundRobin(processList);
 	default:
@@ -72,13 +72,13 @@ void Scheduler::SJF(list<Process> procList)
 }
 
 
-void Scheduler::PriorityP(list<Process> procList)
+void Scheduler::SJFP(list<Process> procList)
 {
 	list[1] = Process();
 }
 
 
-void Scheduler::PriorityNP(list<Process>)
+void Scheduler::Priority(list<Process>)
 {
 
 }

@@ -13,7 +13,7 @@
 	 cin >> n;
 	 list<Process> processList;
 	 //Process[n] = {};
-	 cout << "Choose Scheduler Type: (1 for FCFS, 2 for SJF, 3 for Priority(preemptive), 4 for Priority(non-preemptive), 5 for RR" << endl;
+	 cout << "Choose Scheduler Type: (1 for FCFS, 2 for SJF (non-preemptive), 3 for SJF (preemptive), 4 for Priority, 5 for RR" << endl;
 	 cin >> selection;
 	 
 	 for (int i = 0; i < n; i++)

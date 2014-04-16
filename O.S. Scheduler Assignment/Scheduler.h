@@ -20,8 +20,8 @@ public:
 	void chooseType(unsigned int x);
 	void FCFS(list<Process> procList);
 	void SJF(list<Process> procList);
-	void PriorityP(list<Process> procList);
-	void PriorityNP(list<Process> procList);
+	void SJFP(list<Process> procList);
+	void Priority(list<Process> procList);
 	void RoundRobin(list<Process> procList);
 	void setTotalWaitingTime(int time) const;
 	float calculateAverageWaitingTime();
