@@ -7,7 +7,7 @@
 
  void main()
  {
-	 int n, id, bt, priority, selection;
+	 int n, id, bt, at, priority, selection;
 	 Process process;
 	 cout << "Please enter number of processes" << endl;
 	 cin >> n;
@@ -19,8 +19,8 @@
 	 for (int i = 0; i < n; i++)
 	 {
 		 
-		 cout << "Enter Process " << i << " PID, Burst time" << endl;
-		 cin >> id >> bt;
+		 cout << "Enter Process " << i << " PID, Burst Time and Arrival Time" << endl;
+		 cin >> id >> bt >> at;
 		 process.setID(id);
 		 process.setBurstTime(bt);
 		 if (selection == 3 || selection == 4)
