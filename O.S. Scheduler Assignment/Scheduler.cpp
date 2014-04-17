@@ -1,6 +1,6 @@
 #include "Scheduler.h"
 #include <iostream>
-#include <queue>
+//#include <queue>
 #include <list>
 #include <algorithm>
 
@@ -32,7 +32,7 @@ void Scheduler::chooseType(unsigned int x)
 	case 5:
 		RoundRobin(processList);
 	default:
-		cout << "Entered value is invalid, please retry" << endl;
+		cout << "Entered value is invalid, please retry..." << endl;
 		break;
 	}
 }
@@ -45,7 +45,7 @@ Scheduler::~Scheduler()
 
 void Scheduler::FCFS(list<Process> procList)
 {
-	for (int i = 0; i < numberOfProcesses; i++)
+	for (unsigned int i = 0; i < numberOfProcesses; i++)
 	{
 		execute(procList[i]);
 		remainingProcesses--;

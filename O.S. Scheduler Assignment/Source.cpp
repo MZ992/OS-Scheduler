@@ -7,7 +7,8 @@
 
  void main()
  {
-	 int n, id, bt, at, priority, selection;
+	 string id;
+	 int n, bt, at, priority, selection;
 	 Process process;
 	 cout << "Please enter number of processes" << endl;
 	 cin >> n;
@@ -31,4 +32,7 @@
 		 }
 		 processList.push_back(process);
 	 }
+
+	 Scheduler ProcessScheduler(processList);
+	 ProcessScheduler.chooseType(selection);
  }

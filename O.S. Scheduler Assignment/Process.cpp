@@ -1,4 +1,5 @@
 #include "Process.h"
+#include <string>
 
 
 /*Process::Process(int id, int bTime, int pr)
@@ -11,7 +12,7 @@
 {
 }*/
 
-void Process::setID(int id)
+void Process::setID(std::string id)
 {
 	PID = id;
 }
