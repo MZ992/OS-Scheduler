@@ -9,6 +9,7 @@ Scheduler::Scheduler()
 	totalWaitingTime = 0;
 	numberOfProcesses = 0;
 	remainingProcesses = 0;
+	//listIterator = procList.begin();
 	//processList = procList;
 }
 
@@ -23,6 +24,7 @@ Scheduler::Scheduler(list<Process> procList)
 	numberOfProcesses = procList.size();
 	remainingProcesses = numberOfProcesses;
 	processList = procList;
+	listIterator = procList.begin();
 }
 
 void Scheduler::chooseType(unsigned int x)
@@ -133,5 +135,5 @@ void Scheduler::sortPriority(list<Process> procList)
 void Scheduler::execute(Process process)
 {
 	std::cout << "Executed Process " << process.getID() << std::endl;
-	totalWaitingTime += process.getBurstTime() * (remainingProcesses-1);
+	totalWaitingTime += ((process.getBurstTime() - process.getArrivalTime()) * (remainingProcesses-1);
 }

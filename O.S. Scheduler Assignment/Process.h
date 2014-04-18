@@ -9,6 +9,7 @@ private:
 	int waitingTime;
 	int arrivalTime;
 	int priority;
+	int finishTime;
 
 public:
 //	Process(int id, int bTime, int pr) : PID(id), burstTime(bTime), priority(pr) {}
