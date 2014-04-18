@@ -3,6 +3,9 @@
 //#include <queue>
 #include <list>
 #include <algorithm>
+#include <string>
+
+using namespace std;
 
 Scheduler::Scheduler()
 {
@@ -77,7 +80,7 @@ void Scheduler::SJF(list<Process> procList)
 		}
 		if (iterator == procList.end())
 		{
-			break;
+			return;
 		}
 	}
 }
@@ -135,5 +138,27 @@ void Scheduler::sortPriority(list<Process> procList)
 void Scheduler::execute(Process process)
 {
 	std::cout << "Executed Process " << process.getID() << std::endl;
-	totalWaitingTime += ((process.getBurstTime() - process.getArrivalTime()) * (remainingProcesses-1);
+	totalWaitingTime += process.getBurstTime() * (remainingProcesses - 1);
+}
+
+void Scheduler::calculateTotalWaitingTime()
+{
+	list<Process>::iterator it = processList.begin()++;
+	for (list<Process>::iterator x = processList.begin(); x != processList.end(); x++)
+	{
+		if (it == processList.end())
+		{
+			return;
+		}
+		if (it->getArrivalTime() > prev(it, 1)->getFinishTime())
+		{
+			it->setWaitingTime(0);
+		}
+		else
+		{
+			it->setWaitingTime(it->getArrivalTime() - prev(it, 1)->getFinishTime());
+		}
+
+	}
+	
 }

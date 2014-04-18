@@ -1,7 +1,6 @@
 #include "Process.h"
 #include <string>
 
-
 Process::Process()
 {
 	
@@ -36,4 +35,14 @@ void Process::setArrivalTime(int aTime)
 void Process::setPriority(int pr)
 {
 	priority = pr;
+}
+
+void Process::setFinishTime(int time)
+{
+	finishTime = time;
+}
+
+void Process::setTurnAroundTime(int tatime)
+{
+	turnArnoundTime = tatime;
 }

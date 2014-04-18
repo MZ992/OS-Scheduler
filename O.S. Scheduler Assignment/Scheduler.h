@@ -24,7 +24,8 @@ public:
 	void Priority(list<Process> procList);
 	void RoundRobin(list<Process> procList);
 	void setTotalWaitingTime(int time) const;
-	float calculateAverageWaitingTime();
+	void calculateTotalWaitingTime();
+	void calculateAverageWaitingTime();
 	void execute(Process process);
 	void sortSJF(list<Process> procList);
 	void sortPriority(list<Process> procList);
