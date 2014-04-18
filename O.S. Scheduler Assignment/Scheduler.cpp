@@ -45,9 +45,9 @@ Scheduler::~Scheduler()
 
 void Scheduler::FCFS(list<Process> procList)
 {
-	for (unsigned int i = 0; i < numberOfProcesses; i++)
+	for (list<Process>::iterator it = procList.begin(); it != procList.end(); it++)
 	{
-		execute(procList[i]);
+		execute(*it);
 		remainingProcesses--;
 		if (remainingProcesses == 0)
 		{
@@ -74,22 +74,22 @@ void Scheduler::SJF(list<Process> procList)
 
 void Scheduler::SJFP(list<Process> procList)
 {
-	list[1] = Process();
+	//list[1] = Process();
 }
 
 
-void Scheduler::Priority(list<Process>)
+void Scheduler::Priority(list<Process> procList)
 {
 
 }
 
 
-void Scheduler::RoundRobin(list<Process>)
+void Scheduler::RoundRobin(list<Process> procList)
 {
 
 }
 
-void Scheduler::sortSJF(list<Process>)
+void Scheduler::sortSJF(list<Process> procList)
 {
 	int index = 1;
 	int min = arr[0].getBurstTime();
@@ -105,7 +105,7 @@ void Scheduler::sortSJF(list<Process>)
 	}
 }
 
-void Scheduler::sortPriority(list<Process>)
+void Scheduler::sortPriority(list<Process> procList)
 {
 	int index = 1;
 	int min = arr[0].getPriority();
