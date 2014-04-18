@@ -4,10 +4,18 @@
 #include <list>
 #include <algorithm>
 
-//Scheduler::Scheduler()
-//{
-//
-//}
+Scheduler::Scheduler()
+{
+	totalWaitingTime = 0;
+	numberOfProcesses = 0;
+	remainingProcesses = 0;
+	//processList = procList;
+}
+
+Scheduler::~Scheduler()
+{
+
+}
 
 Scheduler::Scheduler(list<Process> procList)
 {
@@ -32,14 +40,9 @@ void Scheduler::chooseType(unsigned int x)
 	case 5:
 		RoundRobin(processList);
 	default:
-		cout << "Entered value is invalid, please retry..." << endl;
+		//cout << "Entered value is invalid, please retry..." << endl;
 		break;
 	}
-}
-
-Scheduler::~Scheduler()
-{
-
 }
 
 
@@ -60,13 +63,19 @@ void Scheduler::FCFS(list<Process> procList)
 void Scheduler::SJF(list<Process> procList)
 {
 	sortSJF(procList);
-	for (int i = 0; i < numberOfProcesses; i++)
+	list<Process>::iterator iterator = procList.begin();
+	for (unsigned int i = 0; i < numberOfProcesses; i++)
 	{
-		execute(procList[i]);
+		execute(*iterator);
 		remainingProcesses--;
+		iterator++;
 		if (remainingProcesses == 0)
 		{
 			std::cout << "Total waiting time: " << totalWaitingTime << std::endl;
+		}
+		if (iterator == procList.end())
+		{
+			break;
 		}
 	}
 }
@@ -91,15 +100,15 @@ void Scheduler::RoundRobin(list<Process> procList)
 
 void Scheduler::sortSJF(list<Process> procList)
 {
-	int index = 1;
-	int min = arr[0].getBurstTime();
+	list<Process>::iterator index = procList.begin()++;
+	int min = procList.begin()->getBurstTime();
 	Process temp;
-	for (int i = 0; i < numberOfProcesses; i++)
+	for (list<Process>::iterator it = procList.begin(); it != procList.end(); it++)
 	{
-		if (arr[i].getBurstTime() > min)
+		if (it->getBurstTime() > min)
 		{
-			temp = arr[index];
-			arr[index] = arr[i];
+			temp = *index;
+			*index = *it;
 			index++;
 		}
 	}
@@ -107,15 +116,15 @@ void Scheduler::sortSJF(list<Process> procList)
 
 void Scheduler::sortPriority(list<Process> procList)
 {
-	int index = 1;
-	int min = arr[0].getPriority();
+	list<Process>::iterator index = procList.begin()++;
+	int min = procList.begin()->getPriority();
 	Process temp;
-	for (int i = 0; i < numberOfProcesses; i++)
+	for (list<Process>::iterator it = procList.begin(); it != procList.end(); it++)
 	{
-		if (arr[i].getPriority() > min)
+		if (it->getPriority() > min)
 		{
-			temp = arr[index];
-			arr[index] = arr[i];
+			temp = *index;
+			*index = *it;
 			index++;
 		}
 	}
@@ -123,6 +132,6 @@ void Scheduler::sortPriority(list<Process> procList)
 
 void Scheduler::execute(Process process)
 {
-	totalWaitingTime += process.getBurstTime() * remainingProcesses;
-	std::cout << "Executed Process PID " << process.getID() << std::endl;
+	std::cout << "Executed Process " << process.getID() << std::endl;
+	totalWaitingTime += process.getBurstTime() * (remainingProcesses-1);
 }

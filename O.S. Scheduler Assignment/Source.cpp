@@ -1,8 +1,9 @@
 #include <iostream>
-#include <vector>
+#include <string>
 #include "Process.h"
 #include "Scheduler.h"
 #include <list>
+#include <algorithm>
  using namespace std;
 
  void main()

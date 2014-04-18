@@ -2,15 +2,16 @@
 #include <string>
 
 
-/*Process::Process(int id, int bTime, int pr)
+Process::Process()
 {
 	
-}*/
+}
 
 
-/*Process::~Process()
+Process::~Process()
 {
-}*/
+
+}
 
 void Process::setID(std::string id)
 {

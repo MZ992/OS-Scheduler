@@ -14,7 +14,7 @@ private:
 	list<Process> processList;
 	list<Process>::iterator listIterator;
 public:
-	//Scheduler();
+	Scheduler();
 	Scheduler(list<Process> procList);
 	~Scheduler();
 	void chooseType(unsigned int x);
